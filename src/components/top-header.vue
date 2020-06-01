@@ -1,15 +1,20 @@
 <template>
   <div>
-    Logged in
-    <div v-if="loggedIn">Yes</div>
-    <div v-else>No</div>
-    <button class="but" @click="signOut">Sign out</button>
+    <nav class="menu">
+      <router-link to="/login" v-if="!loggedIn">Logowanie</router-link>
+      <router-link to="/register" v-if="!loggedIn">Rejestracja</router-link>
+      <router-link to="/weather" v-if="loggedIn">Pogoda</router-link>
+      <button v-if="loggedIn" @click="signOut" class="log-out-btn">
+        <i class="icon-logout"></i>
+      </button>
+    </nav>
   </div>
 </template>
 
 <script>
 import * as firebase from "firebase/app";
 import "firebase/auth";
+
 export default {
   name: "top-header",
   mounted() {

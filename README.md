@@ -1,4 +1,4 @@
-# z2
+# Weather app login/register using Firebase
 
 ## Project setup
 ```

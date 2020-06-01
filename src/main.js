@@ -5,6 +5,10 @@ import store from './store'
 import axios from "axios"
 import firebase from "firebase/app"
 
+import '../node_modules/bootstrap/scss/bootstrap.scss'
+import './assets/less/main.less'
+import './assets/fontello/css/fontello.css'
+
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
@@ -32,3 +36,5 @@ firebase.auth().onAuthStateChanged(user => {
     }).$mount("#app");
   }
 });
+
+{/* <script type="text/javascript" src="../node_modules/bootstrap/js/src/index.js"></script> */}

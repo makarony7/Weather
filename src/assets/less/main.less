@@ -1,0 +1,59 @@
+// VARIABLES START
+@color-white: #fff;
+@color-primary: #023a5c;
+
+@bg-white: #fff;
+@bg-primary: #023a5c;
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+    &.log-out-btn {
+        padding: 10px;
+        border-radius: 4px;
+        background-color: @bg-primary;
+        i {
+            &::before {
+                font-size: 30px;
+                color: @bg-white;
+            }
+        }
+    }
+}
+
+// VARIABLES END
+
+body {
+    margin: 0;
+}
+
+.lr-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .error {
+        color: red;
+        font-size: 18px;
+    }
+
+    input {
+        width: 300px;
+        padding: 20px;
+        margin-bottom: 20px;
+        font-size: 21px;
+    }
+
+    button {
+        width: 340px;
+        padding: 10px;
+        font-size: 30px;
+    }
+}

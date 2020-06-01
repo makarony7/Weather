@@ -1,12 +1,12 @@
 <template>
   <div>
-      Secret
+      Pogoda
   </div>
 </template>
 
 <script>
 export default {
-    name: "Secret"
+    name: "Weather"
 }
 </script>
 

@@ -1,8 +1,7 @@
 <template>
-  <div>
-      <div v-if="error" class="error">{{ error.message }}</div>
+  <div class="lr-form">
       <form @submit.prevent="pressed">
-            Register
+            <h1>Register</h1>
             <div class="email">
                 <input type="email" v-model="email" placeholder="email" autocomplete="username">
             </div>
@@ -11,6 +10,7 @@
             </div>
             <button type="submit">Register</button>
       </form>
+      <div v-if="error" class="error">{{ error.message }}</div>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
             try {
                 const user = firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                 console.log(user)
-                this.$router.replace({name: 'secret'})
+                this.$router.replace({name: 'weather'})
 
             } catch(err) {
                 console.log(err);
@@ -43,21 +43,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    .error {
-        color: red;
-        font-size: 18px;
-    }
 
-    input {
-        width: 400px;
-        padding: 30px;
-        margin: 20px;
-        font-size: 21px;
-    }
-
-    button {
-        width: 400px;
-        height: 75px;
-        font-size: 100%;
-    }
 </style>
