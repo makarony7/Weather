@@ -43,6 +43,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
@@ -50,7 +51,9 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   const isAuthenticated = firebase.auth().currentUser;
   console.log("isauthenticated", isAuthenticated);
-  if (requiresAuth && !isAuthenticated) {
+  if (!requiresAuth && isAuthenticated) {
+    next('/weather');
+  } else if (requiresAuth && !isAuthenticated) {
     next("/login");
   } else {
     next();

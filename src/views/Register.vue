@@ -10,7 +10,7 @@
             </div>
             <button type="submit" class="big-btn">Zarejestruj się</button>
       </form>
-      <div v-if="error" class="error">{{ error.message }}</div>
+      <div v-if="error" class="error">{{ error }}</div>
   </div>
 </template>
 
@@ -24,25 +24,22 @@ export default {
         return {
             email: '',
             password: '',
-            error: 'test'
+            error: ''
         }
     },
     methods: {
         async pressed() {
-            try {
-                const user = firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-                console.log(user)
-                // this.$router.replace({name: 'weather'})
 
-            } catch(error) {
-                console.log(this.error);
-                this.error = error
-            }
+                firebase
+                .auth()
+                .createUserWithEmailAndPassword(this.email, this.password)
+                .then(() => {
+                    this.$router.push('/weather', () => {})
+                })
+                .catch( err => {
+                    this.error = err.message;
+                });
         }
     }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>
