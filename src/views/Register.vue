@@ -1,14 +1,14 @@
 <template>
   <div class="lr-form">
       <form @submit.prevent="pressed">
-            <h1>Register</h1>
+            <h1 class="text-center">Rejestracja</h1>
             <div class="email">
                 <input type="email" v-model="email" placeholder="email" autocomplete="username">
             </div>
             <div class="password">
-                <input type="password" v-model="password" placeholder="password" autocomplete="current-password">
+                <input type="password" v-model="password" placeholder="hasło" autocomplete="current-password">
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" class="big-btn">Zarejestruj się</button>
       </form>
       <div v-if="error" class="error">{{ error.message }}</div>
   </div>
@@ -24,7 +24,7 @@ export default {
         return {
             email: '',
             password: '',
-            error: ''
+            error: 'test'
         }
     },
     methods: {
@@ -32,10 +32,11 @@ export default {
             try {
                 const user = firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                 console.log(user)
-                this.$router.replace({name: 'weather'})
+                // this.$router.replace({name: 'weather'})
 
-            } catch(err) {
-                console.log(err);
+            } catch(error) {
+                console.log(this.error);
+                this.error = error
             }
         }
     }

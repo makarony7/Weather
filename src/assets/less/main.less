@@ -1,30 +1,107 @@
+// MIXINS START
+
+.box-shadow (@value) {
+    -webkit-box-shadow: @value;
+    -moz-box-shadow: @value;
+    -ms-box-shadow: @value;
+    -o-box-shadow: @value;
+    box-shadow: @value;
+}
+
+.trans-dur(@value) {
+    -webkit-transition-duration: @value;
+    -moz-transition-duration: @value;
+    -ms-transition-duration: @value;
+    -o-transition-duration: @value;
+    transition-duration: @value;
+}
+
+.column-count(@value) {
+    -webkit-column-count: @value;
+    -moz-column-count: @value;
+    -ms-column-count: @value;
+    -o-column-count: @value;
+    column-count: @value;
+}
+
+.column-gap(@value) {
+    -webkit-column-gap: @value;
+    -moz-column-gap: @value;
+    -ms-column-gap: @value;
+    -o-column-gap: @value;
+    column-gap: @value;
+}
+
+.rotate(@value) {
+    -webkit-transform: rotate(@value);
+    -moz-transform: rotate(@value);
+    -ms-transform: rotate(@value);
+    -o-transform: rotate(@value);
+    transform: rotate(@value);
+}
+
+// MIXINS END
+
 // VARIABLES START
+@width-1499: ~'only screen and (max-width: 1499px)';
+@width-1200: ~'only screen and (min-width: 1200px)';
+@width-1199: ~'only screen and (max-width: 1199px)';
+@width-991: ~'only screen and (max-width: 991px)';
+@width-767: ~'only screen and (max-width: 767px)';
+@width-575: ~'only screen and (max-width: 575px)';
+@width-379: ~'only screen and (max-width: 379px)';
+
 @color-white: #fff;
 @color-primary: #023a5c;
 
 @bg-white: #fff;
 @bg-primary: #023a5c;
+@bg-primary-hover: #02466f;
 
-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    width: auto;
+    height: auto;
+    line-height: normal;
+    margin-right: 0;
+    margin-left: 0;
+    opacity: 1;
+}
 
-    &:focus {
-        outline: none;
+a {
+    .trans-dur(0.3s);
+    text-decoration: none !important;
+    color: @color-primary;
+    text-transform: uppercase;
+}
+
+.font-29 {
+    font-size: 29px;
+    font-weight: 300;
+    line-height: 34px;
+
+    @media @width-991 {
+        font-size: 24px;
+        line-height: 39px;
     }
-    &.log-out-btn {
-        padding: 10px;
-        border-radius: 4px;
-        background-color: @bg-primary;
-        i {
-            &::before {
-                font-size: 30px;
-                color: @bg-white;
-            }
-        }
-    }
+}
+
+.font-21 {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 26px;
+}
+
+.font-17 {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 21px;
+}
+
+.font-13 {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 17px;
 }
 
 // VARIABLES END
@@ -33,27 +110,115 @@ body {
     margin: 0;
 }
 
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    .trans-dur(0.3s);
+
+    &:focus {
+        outline: none;
+    }
+
+    &.log-out-btn {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        padding: 2px;
+        border-radius: 4px;
+        background-color: @bg-white;
+
+        i {
+            &::before {
+                font-size: 35px;
+                color: @bg-primary;
+            }
+        }
+    }
+
+    &.big-btn {
+        .font-21;
+        width: 100%;
+        padding: 20px;
+        background-color: @bg-primary;
+        color: @color-white;
+
+        &:hover {
+            background-color: @bg-primary-hover;
+        }
+    }
+}
+
+.bottom-line {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        border-bottom: 2px solid @bg-white;
+        .trans-dur(0.3s);
+    }
+
+    &:hover {
+        &::before {
+            width: 100%;
+            left: 0;
+        }
+    }
+}
+
 .lr-form {
     position: absolute;
-    top: 50%;
+    top: 300px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    width: 400px;
+
+    h1 {
+        .font-29;
+        margin-bottom: 15px;
+    }
 
     .error {
         color: red;
         font-size: 18px;
+        line-height: 22px;
     }
 
     input {
-        width: 300px;
+        width: 100%;
         padding: 20px;
         margin-bottom: 20px;
         font-size: 21px;
     }
+}
 
-    button {
-        width: 340px;
+.header {
+    background-color: @bg-primary;
+    padding: 20px 0;
+    position: relative;
+
+    a {
+        .font-21;
+        display: inline-block;
         padding: 10px;
-        font-size: 30px;
+        color: @color-white;
+        .bottom-line;
+
+        &.router-link-active {
+            &::before {
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+
+    &-menu {
+        display: flex;
+        justify-content: center;
     }
 }

@@ -1,14 +1,14 @@
 <template>
   <div class="lr-form">
       <form @submit.prevent="pressed">
-            <h1>Login</h1>
+            <h1 class="text-center">Logowanie</h1>
             <div class="login">
                 <input type="email" placeholder="login" v-model="email" autocomplete="username">
             </div>
             <div class="password">
-                <input type="password" placeholder="password" v-model="password" autocomplete="current-password">
+                <input type="password" v-model="password" placeholder="hasło" autocomplete="current-password">
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" class="big-btn">Zaloguj się</button>
       </form>
       <div v-if="error" class="error">{{ error.message }}
           <span>

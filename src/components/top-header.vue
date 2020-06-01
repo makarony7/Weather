@@ -1,12 +1,16 @@
 <template>
   <div>
-    <nav class="menu">
-      <router-link to="/login" v-if="!loggedIn">Logowanie</router-link>
-      <router-link to="/register" v-if="!loggedIn">Rejestracja</router-link>
-      <router-link to="/weather" v-if="loggedIn">Pogoda</router-link>
-      <button v-if="loggedIn" @click="signOut" class="log-out-btn">
-        <i class="icon-logout"></i>
-      </button>
+    <nav class="header-menu">
+      <div v-if="!loggedIn">
+        <router-link to="/login">Logowanie</router-link>
+        <router-link to="/register">Rejestracja</router-link>
+      </div>
+      <div v-if="loggedIn">
+        <router-link to="/weather">Pogoda</router-link>
+        <button @click="signOut" class="log-out-btn">
+          <i class="icon-logout"></i>
+        </button>
+      </div>
     </nav>
   </div>
 </template>
@@ -50,9 +54,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-div {
-  color: inherit;
-}
-</style>
