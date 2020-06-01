@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <top-header></top-header>
+    <div>
       <router-link to="/about">About</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/secret">Secret</router-link> |
@@ -9,6 +10,15 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+import topHeader from "./components/top-header"
+export default {
+    components: {
+      topHeader
+    }
+}
+</script>
 
 <style lang="less">
 #app {
