@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import Secret from '../views/Secret.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +12,21 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/Login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/Register',
+    name: 'register',
+    component: Register
+  },
+  {
+    path: '/Secret',
+    name: 'secret',
+    component: Secret
   },
   {
     path: '/about',
