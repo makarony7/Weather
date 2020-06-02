@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from "axios"
 import firebase from "firebase/app"
+import BootstrapVue from 'bootstrap-vue';
 
 import '../node_modules/bootstrap/scss/bootstrap.scss'
 import './assets/less/main.less'
@@ -24,6 +25,8 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+Vue.use(BootstrapVue);
+
 let app;
 
 firebase.auth().onAuthStateChanged(user => {
@@ -36,5 +39,3 @@ firebase.auth().onAuthStateChanged(user => {
     }).$mount("#app");
   }
 });
-
-{/* <script type="text/javascript" src="../node_modules/bootstrap/js/src/index.js"></script> */}

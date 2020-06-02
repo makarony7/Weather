@@ -2,11 +2,11 @@
   <div>
     <nav class="header-menu">
       <div v-if="!loggedIn">
-        <router-link to="/login">Logowanie</router-link>
-        <router-link to="/register">Rejestracja</router-link>
+        <router-link to="/login">Login</router-link>
+        <router-link to="/register">Register</router-link>
       </div>
       <div v-if="loggedIn">
-        <router-link to="/weather">Pogoda</router-link>
+        <router-link to="/weather">Weather</router-link>
         <button @click="signOut" class="log-out-btn">
           <i class="icon-logout"></i>
         </button>

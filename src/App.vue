@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <div class="header">
-      <div class="container">
-        <top-header></top-header>
-      </div>
-    </div>
-      <router-view/>
+    <router-view />
+    <div v-if="$route.name == 'login' || $route.name == 'register'" class="bg-behind bg-thunder"></div>
   </div>
 </template>
 
 <script>
-import topHeader from "./components/top-header"
+// import topHeader from "./components/top-header"
 export default {
     components: {
-      topHeader
+      // topHeader
     }
 }
 </script>

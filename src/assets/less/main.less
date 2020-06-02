@@ -40,6 +40,14 @@
     transform: rotate(@value);
 }
 
+.scale(@value) {
+    -webkit-transform: scale(@value);
+    -moz-transform: scale(@value);
+    -ms-transform: scale(@value);
+    -o-transform: scale(@value);
+    transform: scale(@value);
+}
+
 // MIXINS END
 
 // VARIABLES START
@@ -68,11 +76,21 @@
     opacity: 1;
 }
 
+p {
+    margin-bottom: 0;
+}
+
 a {
     .trans-dur(0.3s);
     text-decoration: none !important;
     color: @color-primary;
     text-transform: uppercase;
+}
+
+.font-50 {
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 55px;
 }
 
 .font-29 {
@@ -104,10 +122,61 @@ a {
     line-height: 17px;
 }
 
+.dark-mask {
+    &:after {
+        content: "";
+        background: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+    }
+}
+
 // VARIABLES END
 
 body {
     margin: 0;
+}
+
+.bg-behind {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .dark-mask;
+
+    &.bg-thunder {
+        background-image: url("../img/thunders.jpg");
+    }
+
+    &.bg-bridge {
+        background-image: url("../img/bridge.jpg");
+    }
+}
+
+.home-a {
+    display: block;
+    width: 100%;
+    height: 100vh;
+
+    p {
+        position: absolute;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        .font-50;
+        color: @color-white;
+        text-align: center;
+    }
 }
 
 button {
@@ -173,20 +242,25 @@ button {
 
 .lr-form {
     position: absolute;
-    top: 300px;
+    top: 25%;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 
     h1 {
         .font-29;
+        color: @color-white;
         margin-bottom: 15px;
     }
 
     .error {
-        color: red;
-        font-size: 18px;
-        line-height: 22px;
+        margin-top: 10px;
+        .font-13;
+        color: @color-white;
+        a {
+            color: @color-white;
+        }
     }
 
     input {
@@ -198,7 +272,6 @@ button {
 }
 
 .header {
-    background-color: @bg-primary;
     padding: 20px 0;
     position: relative;
 
