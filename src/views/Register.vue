@@ -5,18 +5,18 @@
                 <top-header />
             </b-container>
         </div>
-        <div class="lr-form">
+        <div class="lr-form p-absolute">
             <div class="container">
-                <form @submit.prevent="pressed">
-                        <h1 class="text-center">Register</h1>
-                        <div class="email">
-                            <input type="email" v-model="email" placeholder="email" autocomplete="username">
-                        </div>
-                        <div class="password">
-                            <input type="password" v-model="password" placeholder="password" autocomplete="current-password">
-                        </div>
-                        <button type="submit" class="big-btn">Register now!</button>
-                </form>
+                <b-form @submit.prevent="pressed">
+                    <h1 class="text-center">Register</h1>
+                    <div class="email">
+                        <b-form-input class="x-input" type="email" v-model="email" placeholder="email" autocomplete="email" />
+                    </div>
+                    <div class="password">
+                        <b-form-input class="x-input" type="password" v-model="password" placeholder="password" autocomplete />
+                    </div>
+                    <button type="submit" class="big-btn">Register now!</button>
+                </b-form>
                 <div v-if="error" class="error text-center">
                     {{ error }}
                 </div>

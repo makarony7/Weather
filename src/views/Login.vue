@@ -5,18 +5,18 @@
                 <top-header />
             </b-container>
         </div>
-        <div class="lr-form">
+        <div class="lr-form p-absolute">
             <b-container>
-                <form @submit.prevent="pressed">
-                        <h1 class="text-center">Login</h1>
-                        <div class="login">
-                            <input type="email" placeholder="login" v-model="email" autocomplete="username">
-                        </div>
-                        <div class="password">
-                            <input type="password" v-model="password" placeholder="password" autocomplete="current-password">
-                        </div>
-                        <button type="submit" class="big-btn">Login now!</button>
-                </form>
+                <b-form @submit.prevent="pressed">
+                    <h1 class="text-center">Login</h1>
+                    <div class="login">
+                        <b-form-input class="x-input" type="email" placeholder="login" v-model="email" autocomplete="email" />
+                    </div>
+                    <div class="password">
+                        <b-form-input class="x-input" type="password" v-model="password" placeholder="password" />
+                    </div>
+                    <button type="submit" class="big-btn">Login now!</button>
+                </b-form>
                 <div v-if="error" class="error text-center">
                     <div>{{ error }}</div>
                     Need an account? <router-link to="/register">register</router-link>

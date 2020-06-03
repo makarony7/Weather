@@ -6,7 +6,7 @@ import axios from "axios"
 import firebase from "firebase/app"
 import BootstrapVue from 'bootstrap-vue';
 
-// import '../node_modules/bootstrap/scss/bootstrap.scss'
+import '../node_modules/bootstrap/scss/bootstrap.scss'
 import './assets/less/main.less'
 import './assets/fontello/css/fontello.css'
 

@@ -6,7 +6,7 @@
         <router-link to="/register">Register</router-link>
       </div>
       <div v-if="loggedIn">
-        <router-link to="/weather">Weather</router-link>
+        <h2>Weather</h2>
         <button @click="signOut" class="log-out-btn">
           <i class="icon-logout"></i>
         </button>

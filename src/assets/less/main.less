@@ -60,6 +60,7 @@
 @width-379: ~'only screen and (max-width: 379px)';
 
 @color-white: #fff;
+@color-black: #000;
 @color-primary: #023a5c;
 
 @bg-white: #fff;
@@ -76,6 +77,9 @@
     opacity: 1;
 }
 
+h1,
+h2,
+h3,
 p {
     margin-bottom: 0;
 }
@@ -90,7 +94,12 @@ a {
 .font-50 {
     font-size: 50px;
     font-weight: 900;
-    line-height: 55px;
+    line-height: 60px;
+
+    @media @width-991 {
+        font-size: 40px;
+        line-height: 50px;
+    }
 }
 
 .font-29 {
@@ -141,6 +150,22 @@ body {
     margin: 0;
 }
 
+.p-absolute {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+}
+
+.x-input {
+    .font-21;
+    padding: 10px;
+    height: auto !important;
+    color: @color-black;
+}
+
 .bg-behind {
     position: fixed;
     top: 0;
@@ -155,10 +180,46 @@ body {
 
     &.bg-thunder {
         background-image: url("../img/thunders.jpg");
+        animation: scaleOut 180s infinite;
+
     }
 
     &.bg-bridge {
         background-image: url("../img/bridge.jpg");
+        animation: scaleIn 180s infinite;
+    }
+
+    &.bg-night {
+        background-image: url("../img/night.jpg");
+        animation: scaleIn 180s infinite;
+    }
+
+    @keyframes scaleOut {
+        0% {
+            .scale(1.5);
+        }
+
+        50% {
+            .scale(1);
+        }
+
+        100% {
+            .scale(1.5);
+        }
+    }
+
+    @keyframes scaleIn {
+        0% {
+            .scale(1);
+        }
+
+        50% {
+            .scale(1.5);
+        }
+
+        100% {
+            .scale(1);
+        }
     }
 }
 
@@ -167,15 +228,14 @@ body {
     width: 100%;
     height: 100vh;
 
+    &-title {
+        max-width: 500px;
+        top: 10%;
+    }
+
     p {
-        position: absolute;
-        top: 90px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 500px;
         .font-50;
         color: @color-white;
-        text-align: center;
     }
 }
 
@@ -240,34 +300,27 @@ button {
     }
 }
 
-.lr-form {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 400px;
 
+.lr-form {
     h1 {
         .font-29;
         color: @color-white;
         margin-bottom: 15px;
     }
 
-    .error {
-        margin-top: 10px;
-        .font-13;
-        color: @color-white;
-        a {
-            color: @color-white;
-        }
-    }
-
     input {
         width: 100%;
-        padding: 20px;
         margin-bottom: 20px;
-        font-size: 21px;
+    }
+}
+
+.error {
+    margin-top: 10px;
+    .font-13;
+    color: @color-white;
+
+    a {
+        color: @color-white;
     }
 }
 
@@ -276,7 +329,7 @@ button {
     position: relative;
 
     a {
-        .font-21;
+        .font-29;
         display: inline-block;
         padding: 10px;
         color: @color-white;
@@ -293,5 +346,66 @@ button {
     &-menu {
         display: flex;
         justify-content: center;
+    }
+
+    h2 {
+        .font-29;
+        text-transform: uppercase;
+        color: @color-white;
+        margin-top: 10px;
+    }
+}
+
+.weather {
+    .error {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+    }
+
+    &__inside {
+        &-form {
+            margin-bottom: 20px;
+        }
+
+        &-info {
+            position: relative;
+            text-align: center;
+
+            p,
+            h2,
+            .weather-ico {
+                .trans-dur(0.3s);
+                opacity: 1;
+            }
+
+            h2 {
+                .font-21;
+                color: @color-white;
+                margin-bottom: 10px;
+            }
+
+            p {
+                .font-17;
+                color: @color-white;
+            }
+
+            .weather-ico {
+                position: absolute;
+                top: -12px;
+                right: 0;
+            }
+
+            &.errorer {
+
+                p,
+                h2,
+                .weather-ico {
+                    opacity: 0.2;
+                }
+            }
+        }
     }
 }
